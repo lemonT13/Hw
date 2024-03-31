@@ -43,7 +43,7 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  boder: 2px solid rgbs(255, 255, 255, .2);
+  boder: 2px solid rgba(255, 255, 255, .2);
   border-radius: 40px;
 }
 
