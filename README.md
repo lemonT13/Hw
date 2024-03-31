@@ -1,3 +1,2 @@
 # Hw
-hello
-[安装](#project)
+[安装](exe01)
