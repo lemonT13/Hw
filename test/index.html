@@ -2,38 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>保存进度</title>
+    <title>储存多个名字</title>
 </head>
 <body>
-<script>
-// 保存进度
-// 保存名字
-function saveNames() {
-    // 获取用户输入的名字
-    var names = document.getElementById("names").value.split(",");
+<input type="text" id="name" placeholder="输入名字">
+<button onclick="saveName()">保存</button>
+<button onclick="showNames()">显示</button>
+<ul id="names"></ul>
 
-    // 将名字存储到 Local Storage 中
+<script>
+// 保存名字
+function saveName() {
+    // 获取用户输入的名字
+    var name = document.getElementById("name").value;
+
+    // 从 Local Storage 中获取已保存的名字
+    var names = JSON.parse(localStorage.getItem("names")) || [];
+
+    // 将新名字添加到数组中
+    names.push(name);
+
+    // 将数组存储到 Local Storage 中
     localStorage.setItem("names", JSON.stringify(names));
 }
 
-// 读取名字
-function loadNames() {
-    // 从 Local Storage 中读取名字
-    var names = JSON.parse(localStorage.getItem("names"));
+// 显示名字
+function showNames() {
+    // 从 Local Storage 中获取已保存的名字
+    var names = JSON.parse(localStorage.getItem("names")) || [];
 
-    // 将名字显示到页面上
-    document.getElementById("names").value = names.join(",");
+    // 清空列表
+    document.getElementById("names").innerHTML = "";
+
+    // 将名字添加到列表中
+    for (var i = 0; i < names.length; i++) {
+        var li = document.createElement("li");
+        li.innerText = names[i];
+        document.getElementById("names").appendChild(li);
+    }
 }
 
 // 页面加载时读取名字
 window.onload = function() {
-    loadNames();
+    showNames();
 };
-
 </script>
-
-<input type="text" id="name" placeholder="姓名">
-<input type="text" id="age" placeholder="年龄">
-<button onclick="saveProgress()">保存进度</button>
 </body>
 </html>
