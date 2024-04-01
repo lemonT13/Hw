@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>保存进度</title>
+</head>
+<body>
+<script>
+// 保存进度
+function saveProgress() {
+    // 获取用户输入
+    var name = document.getElementById("name").value;
+    var age = document.getElementById("age").value;
 
+    // 将用户输入存储到 Local Storage 中
+    localStorage.setItem("name", name);
+    localStorage.setItem("age", age);
+}
+
+// 读取进度
+function loadProgress() {
+    // 从 Local Storage 中读取用户输入
+    var name = localStorage.getItem("name");
+    var age = localStorage.getItem("age");
+
+    // 将用户输入显示到页面上
+    document.getElementById("name").value = name;
+    document.getElementById("age").value = age;
+}
+
+// 页面加载时读取进度
+window.onload = function() {
+    loadProgress();
+};
+</script>
+
+<input type="text" id="name" placeholder="姓名">
+<input type="text" id="age" placeholder="年龄">
+<button onclick="saveProgress()">保存进度</button>
+</body>
+</html>
