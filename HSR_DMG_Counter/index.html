@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>崩坏星穹铁道伤害计算器</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="icon" href="img/icon.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+        <h1>请选择角色</h1>
+        </header>
+        <main>
+            <table id="charactorFilter">
+                <thead>
+                    <tr>
+                        <th colspan="2">角色</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>稀有度</td>
+                        <td>
+                            <button class="showRarityButton" data-rarity="5">*****</button>
+                            <button class="showRarityButton" data-rarity="4">****</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>命途</td>
+                        <td>
+                            <button class="showPathButton" data-path="destruction">毁灭</button>
+                            <button class="showPathButton" data-path="hunt">巡猎</button>
+                            <button class="showPathButton" data-path="erudition">智识</button>
+                            <button class="showPathButton" data-path="harmony">同谐</button>
+                            <button class="showPathButton" data-path="nihility">虚无</button>
+                            <button class="showPathButton" data-path="preservation">存护</button>
+                            <button class="showPathButton" data-path="abundance">丰饶</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>属性</td>
+                        <td>
+                            <button class="showCombatButton" data-combat="fire">火</button>
+                            <button class="showCombatButton" data-combat="ice">冰</button>
+                            <button class="showCombatButton" data-combat="imaginary">虚数</button>
+                            <button class="showCombatButton" data-combat="lightning">雷</button>
+                            <button class="showCombatButton" data-combat="physical">物理</button>
+                            <button class="showCombatButton" data-combat="quantum">量子</button>
+                            <button class="showCombatButton" data-combat="wind">风</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="clear">
+                            <button class="clear">清除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="characterList">
+                <!-- 角色按钮将动态添加到这里 -->
+            </div>
+        </main>
+    </div>
+  <script src="home.js"></script>
+</body>
+</html>
