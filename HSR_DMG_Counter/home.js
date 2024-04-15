@@ -12,7 +12,8 @@ var characters = [
     { name: '刃', rarity: '5', path: 'destruction', combat: 'wind', img: 'cal/charactor/img/blade', id: 'blade'},
     { name: '布洛妮娅', rarity: '5', path: 'harmony', combat: 'wind', img: 'cal/charactor/img/bronya', id: 'bronya'},
     { name: '克拉拉', rarity: '5', path: 'destruction', combat: 'physical', img: 'cal/charactor/img/clara', id: 'clara'},
-    { name: '丹恒', rarity: '4', path: 'hunt', combat: 'wind', img: 'cal/charactor/img/', id: 'danHeng'}
+    { name: '丹恒', rarity: '4', path: 'hunt', combat: 'wind', img: 'cal/charactor/img/', id: 'danHeng'},
+    { name: '', rarity: '5', path: '', combat: '', img: 'cal/charactor/img/', id: ''},
     //{ name: '', rarity: '', path: '', combat: '', img: 'cal/charactor/img/', id: ''},
 ];
 
