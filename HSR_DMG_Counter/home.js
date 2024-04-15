@@ -65,7 +65,7 @@ function filterCharacters() {
         characterButton.style.backgroundSize = 'cover'; // 确保图片覆盖整个按钮
         characterButton.addEventListener('click', function() {
             // 构建目标页面的URL，包含角色ID作为参数
-            var targetUrl = `cal/cal.html?characterId=${character.id}`;
+            var targetUrl = `./cal/cal.html?characterId=${character.id}`;
             window.open(targetUrl);
         });
         container.appendChild(characterButton);
