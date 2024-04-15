@@ -20,45 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
     filterCharacters();
 });
 
-/*document.addEventListener('click', function(event) {
-
-    // 检查被点击的元素是否是你关心的按钮
-    if (event.target.classList.contains('showRarityButton') ||
-        event.target.classList.contains('showPathButton') ||
-        event.target.classList.contains('showCombatButton')) {
-        
-        // 获取被点击按钮的data-rarity、data-path和data-combat属性
-        var selectedRarity = event.target.getAttribute('data-rarity');
-        var selectedPath = event.target.getAttribute('data-path');
-        var selectedCombat = event.target.getAttribute('data-combat');
-            
-        // 过滤角色数组，只保留匹配的角色
-        var filteredCharacters = characters.filter(function(character) {
-            var matchesRarity = !selectedRarity || character.rarity === selectedRarity;
-            var matchesPath = !selectedPath || character.path === selectedPath;
-            var matchesCombat = !selectedCombat || character.combat === selectedCombat;
-            return matchesRarity && matchesPath && matchesCombat;
-        });
-            
-        // 获取或创建一个容器元素来显示角色信息
-        var characterList = document.getElementById('characterList');
-        if (!characterList) {
-            characterList = document.createElement('div');
-            characterList.id = 'characterList';
-            document.body.appendChild(characterList);
-        }
-            
-        // 清空容器元素以准备新的角色信息
-        characterList.innerHTML = '';
-            
-        // 遍历过滤后的角色数组，为每个角色创建一个HTML元素并添加到容器中
-        filteredCharacters.forEach(function(character) {
-            var characterDiv = document.createElement('div');
-            characterDiv.textContent = character.name; // 只显示角色的名字
-            characterList.appendChild(characterDiv);
-        });
-    }
-});*/
 document.addEventListener('click', function(event) {
     // 对于showRarityButton的监听器
     if (event.target.classList.contains('showRarityButton')){
