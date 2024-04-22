@@ -11,35 +11,79 @@
             text-decoration: wavy underline;
             text-transform: uppercase;
         }
-        .tBox{
-            border: solid 1px;
+
+        .tBox {
+            border: solid 1px red;
+            width: 200px;
+            white-space: nowrap;
+            overflow: clip;
+        }
+
+        #t1 {
+            text-overflow: clip;
+        }
+
+        #t2 {
+            text-overflow: ellipsis;
         }
 
         .center {
             text-align: center;
         }
+
+        .par {
+            border: solid 1px blue;
+            width: 400px;
+            overflow: clip;
+            text-align: justify;
+        }
+
+        #p1 {
+            /* white-space: break-spaces; */
+        }
+
+        #p2 {
+            line-height: 2.5;
+        }
+
+        .footer {
+            border: solid 1px red;
+            width: 150px;
+        }
+
+        #f2 {
+            word-break: break-all;
+        }
     </style>
 </head>
 
 <body>
-    <h1 class="tBox">
+    <h1 class="tBox" id="t1">
         "Whispers of the Forgotten Woods"
     </h1>
-    <h1 class="tBox">
+    <h1 class="tBox" id="t2">
         "Whispers of the Forgotten Woods"
     </h1>
     <h1 class="center">
         "Whispers of the Forgotten Woods"
     </h1>
-    <p>
+    <p class="par" id="p1">
+        In the depths of the forgotten woods, a lone wanderer uncovers an ancient relic pulsating with untold power.With
+        each step, whispers of forgotten lore guide their journey, leading to a destiny intertwined with the heartof the
+        forest.
+    </p>
+    <p class="par" id="p2">
         In the depths of the forgotten woods, a lone wanderer uncovers an ancient relic pulsating with untold power.
         With each step, whispers of forgotten lore guide their journey, leading to a destiny intertwined with the heart
         of the forest.
     </p>
-    <p>
-        In the depths of the forgotten woods, a lone wanderer uncovers an ancient relic pulsating with untold power.
-        With each step, whispers of forgotten lore guide their journey, leading to a destiny intertwined with the heart
-        of the forest.
+
+    <hr>
+    <p class="footer" id="f1">
+        (https://www.chatgpt.com)
+    </p>
+    <p class="footer" id="f2">
+        (https://www.chatgpt.com)
     </p>
 </body>
 
