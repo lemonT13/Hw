@@ -1,16 +1,124 @@
-* {
+body {
   margin: 0;
+  padding: 0;
+  line-height: 1.5;
 }
 
 header {
+  position: fixed;
   width: 100%;
-  margin-top: 10px;
-  background-color: red;
+  padding-top: 50px;
+  background: #00bcd4;
+  transition: 0.7s all;
+  z-index: 100;
 }
 
-.icon {
-  margin-left: 5px;
+.inner {
+  width: 80%;
+  margin: 0 auto;
 }
-.nav-bar {
-  margin-left: 5px;
+
+.logo {
+  float: left;
+  color: #fff;
+  font-size: 50px;
+  /* 动画过渡时间 */
+  transition: 0.7s all;
+}
+
+body.header-fixed header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding-top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+/* logo 动画 */
+body.header-fixed .logo {
+  font-size: 30px;
+}
+
+.nav_item {
+  list-style-type: none;
+  display: inline;
+  float: right;
+}
+
+.nav_item li {
+  display: inline;
+}
+
+.nav_item a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 10px;
+  z-index: 0;
+  font-size: 20px;
+  position: relative;
+}
+
+.nav_item a:before
+{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 2px;
+  height: 0px;
+  background: #FFF;
+  content: "";
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.nav_item a:after
+{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: #FFF;
+  content: "";
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.nav_item a:hover:before
+{
+  height: 100%;
+}
+
+.nav_item a:hover:after
+{
+  opacity: 0;
+  top: 100%;
+}
+
+.container {
+  height: 300vh;
+  background-color: blue;
+  padding-top: 200px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+  position: relative;
+  margin: 0px;
+}
+
+.footer_item {
+  margin: 30px;
+  border: solid 1px;
+  width: 30%;
+}
+
+.img_link a,
+.ref_link a {
+  color: white;
+  text-decoration: none;
+  display: block;
 }
