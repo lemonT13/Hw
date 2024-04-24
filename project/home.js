@@ -10,5 +10,4 @@ window.addEventListener("scroll", function () {
   } else {
     bodyElement.classList.remove("header-fixed");
   }
-  const aboutUsOffset = aboutUsElement.getBoundingClientRect().top;
 });
