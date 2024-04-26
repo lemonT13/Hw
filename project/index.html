@@ -7,34 +7,45 @@
 </head>
 
 <body>
-    <header id="navTop">
+    <header>
         <div class="inner">
             <div class="logo">
                 logo
             </div>
             <nav>
                 <ul class="nav_item">
-                    <li><a href="#">home</a></li>
-                    <li><a href="#aboutUs">about us</a></li>
-                    <li><a href="#project">project</a></li>
-                    <li><a href="#copyright">copyright</a></li>
+                    <li><a href="#" onclick="scrollToSection('home')">主页</a></li>
+                    <li><a href="#" onclick="scrollToSection('about-us')">关于我们</a></li>
+                    <li><a href="#" onclick="scrollToSection('project')">项目</a></li>
+                    <li><a href="#" onclick="scrollToSection('appendix')">附录</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <section>
-        <div class="container">
-            <div class="inner">
-                <div class="aboutUs" id="aboutUs">
-                    <h1>hello</h1>
+    <div class="container">
+        <div class="inner">
+            <section class="home" id="home">
+                <h1>欢迎来到我们的网站</h1>
+                <p>这里是学生创新创业项目的主页，欢迎来到我们的网站，这里有许多有趣的项目，希望你能喜欢！</p>
+            </section>
+            <section class="about-us scroll" id="about-us">
+                <h1>你好！</h1>
+                <div class="intro">
+                    <div>我们的组员有</div>
+                    <ul class="animated-txt">
+                        <li><span>冼钧昊</span></li>
+                        <li><span>李威雄</span></li>
+                        <li><span>黄绍峰</span></li>
+                        <li><span>陈光祖</span></li>
+                    </ul>
                 </div>
-                <div class="project" id="project">
-
-                </div>
-            </div>
+            </section>
+            <section class="project scroll" id="project">
+                
+            </section>
         </div>
-    </section>
-    <footer id="copyright">
+    </div>
+    <footer id="appendix">
         <div class="footer_item fLogo">
             <img src="" alt="">
             <p>Student Fair Use</p>
