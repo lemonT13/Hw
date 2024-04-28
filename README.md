@@ -12,5 +12,5 @@
 [exe11](exe11)
 
 # Project
-[Project](project)
+[Project](Project)
 [崩坏：星穹铁道伤害计算器](HSR_DMG_Counter)
