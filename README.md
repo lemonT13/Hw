@@ -10,7 +10,13 @@
 [exe09](exe09)
 [exe10](exe10)
 [exe11](exe11)
-
+[exe12](exe12)
+[exe13](exe13)
+[exe13](exe14)
+[exe13](exe15)
+[exe13](exe16)
+[exe13](exe17)
+[exe13](exe18)
 # Project
 [Project](Project)
 [崩坏：星穹铁道伤害计算器](HSR_DMG_Counter)
