@@ -16,7 +16,7 @@ var characters = [
     { name: '砂金', rarity: '5', path: 'preserve', combat: 'imaginary', img: 'cal/charactor/img/', id: 'placerGold'},
     { name: '花火', rarity: '5', path: 'harmony', combat: 'quantum', img: 'cal/charactor/img/', id: ''},
     { name: '真理医生', rarity: '5', path: 'hunt', combat: 'imaginary', img: 'cal/charactor/img/', id: ''},
-    { name: '阮·梅', rarity: '5', path: 'harmony', combat: 'Ice', img: 'cal/charactor/img/', id: ''}
+    { name: '阮·梅', rarity: '5', path: 'harmony', combat: 'ice', img: 'cal/charactor/img/', id: ''}
     //{ name: '', rarity: '', path: '', combat: '', img: 'cal/charactor/img/', id: ''},
 ];
 
