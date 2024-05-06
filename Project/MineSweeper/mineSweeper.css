@@ -2,25 +2,6 @@ body {
     margin: 0;
 }
 
-/* .con-set {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */
-
-.setting {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 500px;
-    width: 500px;
-    background-color: yellow;
-    border-radius: 10%;
-}
-
 .container {
     display: flex;
     justify-content: center;
@@ -28,9 +9,25 @@ body {
     flex-direction: column;
 }
 
-.game-grid {
+.board-normal{
+    width: 400px;
+    height: 400px;
     display: grid;
-    grid-gap: 1px; /* 格子间隔 */
+    grid-gap: 1px;
+}
+
+.board-medium{
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-gap: 1px;
+}
+
+.board-hard{
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-gap: 1px;
 }
 
 .cell {

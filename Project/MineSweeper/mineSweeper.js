@@ -1,47 +1,19 @@
-window.addEventListener("load", function () {
-    openPopUp();
-  });
-  
-  const gameGrid = document.getElementById("game-grid");
-  
-  window.addEventListener("load", function () {
-    openPopUp();
-  });
-  
-  function startGame() {
-    let rows = document.getElementById("rows").value;
-    let cols = document.getElementById("cols").value;
-    let mines = document.getElementById("mines").value;
-  
-    if ((rows * cols) / 10 > mines) {
-      alert("mine had too be more than 10% of the cells");
-    } else {
-      createGameBoard(rows, cols);
-    }
-  }
-  
-  function createGameBoard(rows, cols) {
-    // 设置游戏板大小
-    document.getElementById(
-      "game-grid"
-    ).style.gridTemplateColumns = `repeat(${rows}, 40px)`;
-    document.getElementById(
-      "game-grid"
-    ).style.gridTemplateRows = `repeat(${cols}, 40px)`;
+const board = document.getElementById("board");
+let width = 10;
+const boardNormal;
+const boardMedium;
+const boardHard;
+const chooseBoard = document.createElement("div")
+board.appendChild()
+board.removeChild()
+function createGameBoard() {
     // 清除所有cell
-    document.getElementById("game-grid").innerHTML = "";
+    document.getElementById("board").innerHTML = "";
     // 创建游戏板
-    for (let i = 0; i < rows; i++) {
-      for (let j = 0; j < cols; j++) {
+    for (let i = 0; i < width * width; i++) {
         const cell = document.createElement("div");
         cell.classList.add(`${i}`);
-        gameGrid.appendChild(cell);
-      }
+        .appendChild(cell);
     }
-    for (let i = 0; i < mines; i++) {
-      const randomRow = Math.floor(Math.random() * rows);
-    }
-  }
-  
-  function openPopUp() {}
-  
+
+}
