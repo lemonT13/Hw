@@ -34,9 +34,7 @@ window.addEventListener("load", function () {
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         const cell = document.createElement("div");
-        cell.classList.add(`cell`);
-        cell.classList.add(`rows${i}`);
-        cell.classList.add(`cols${j}`);
+        cell.classList.add(`${i}`);
         gameGrid.appendChild(cell);
       }
     }
