@@ -19,4 +19,6 @@
 [exe18](exe18)
 # Project
 [Project](Project)
-[崩坏：星穹铁道伤害计算器](HSR_DMG_Counter)
+[崩坏：星穹铁道伤害计算器](Project/HSR_DMG_Counter)
+[扫坤](Project/MineSweeper)
+[Tic Tac Toe](Project/Tic_Tac_Toe)
