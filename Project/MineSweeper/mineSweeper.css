@@ -26,7 +26,7 @@ body {
 }
 
 .mines {
-    background-image: url("kun.png");
+    background-image: url("./img/kun.JPG");
 }
 
 #boardNormal .checked , #boardNormal .flag{
