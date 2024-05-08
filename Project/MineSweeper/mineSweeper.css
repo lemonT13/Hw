@@ -25,10 +25,6 @@ body {
     font-style: normal;
 }
 
-.mines {
-    background-image: url("./img/kun.JPG");
-}
-
 #boardNormal .checked , #boardNormal .flag{
     width: 40px;
     height: 40px;
