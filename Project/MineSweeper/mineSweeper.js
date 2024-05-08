@@ -492,7 +492,7 @@ function gameOver() {
     const cells = document.querySelectorAll(".cell");
     cells.forEach(function (cell) {
         if (cell.classList.contains("mines")) {
-            cell.innerHTML = "X";
+            cell.innerHTML = "<img src="./img/kun.JPG" alt="Flowers in Chania" background-size="cover">";
             cell.classList.remove("mines");
             cell.classList.add("checked");
         }
