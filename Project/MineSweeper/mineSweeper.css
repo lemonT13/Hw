@@ -42,36 +42,40 @@ body {
 }
 
 .one {
-    color: #fff;
+    color: #96d35f;
 }
 
 .two {
-    color: #fff;
+    color: #d9ec37;
 }
 
 .three {
-    color: #fff;
+    color: #fff76b;
 }
 
 
 .four {
-    color: #fff;
+    color:#ffd977;
 }
 
 .five {
-    color: #fff;
+    color:#ffc777;
 }
 
 .six {
-    color: #fff;
+    color: #ffa57d;
 }
 
 .seven {
-    color: #fff;
+    color: #ff8c82;
 }
 
 .eight {
-    color: #fff;
+    color: #ff6250;
+}
+
+.nine {
+    color: #ff4015;
 }
 
 #boardMedium {
