@@ -17,68 +17,108 @@ body {
     background-color: aquamarine;
 }
 
+#boardNormal .checked , #boardNormal .flag{
+    width: 40px;
+    height: 40px;
+    background-color: lightgray;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 30px;
+    user-select: none;
+}
+
+#boardNormal .valid ,#boardNormal .mines{
+    width: 40px;
+    height: 40px;
+    background-color: grey;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+}
+
+.one {
+    color: #fff;
+}
+
+.two {
+    color: #fff;
+}
+
+.three {
+    color: #fff;
+}
+
+
+.four {
+    color: #fff;
+}
+
+.five {
+    color: #fff;
+}
+
+.six {
+    color: #fff;
+}
+
+.seven {
+    color: #fff;
+}
+
+.eight {
+    color: #fff;
+}
+
 #boardMedium {
-    width: 1000px;
+    width: 900px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
     background-color: aquamarine;
+}
+
+#boardMedium .checked , #boardMedium .flag{
+    width: 20px;
+    height: 20px;
+    background-color: lightgray;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 18px;
+    user-select: none;
+}
+
+#boardMedium .valid ,#boardMedium .mines{
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+    border: 1px solid #fff;
+    box-sizing: border-box;
 }
 
 #boardHard {
-    width: 1000px;
+    width: 400px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
     background-color: aquamarine;
 }
 
-#boardNormal .valid {
+#boardHard .checked , #boardHard .flag{
+    width: 40px;
+    height: 40px;
+    background-color: lightgray;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 30px;
+    user-select: none;
+}
+
+#boardHard .valid ,#boardHard .mines{
     width: 40px;
     height: 40px;
     background-color: grey;
     border: 1px solid #fff;
     box-sizing: border-box;
-}
-
-#boardNormal .mines {
-    width: 40px;
-    height: 40px;
-    background-color: red;
-    border: 1px solid #fff;
-    box-sizing: border-box;
-}
-
-#boardMedium .kun {
-    width: 38px;
-    height: 38px;
-    background-color: red;
-    border: 1px solid #fff;
-    box-sizing: border-box;
-}
-
-#boardMedium .valid {
-    width: 38px;
-    height: 38px;
-    background-color: grey;
-    border: 1px solid #fff;
-}
-
-#boardHard .kun {
-    width: 38px;
-    height: 38px;
-    background-color: red;
-    border: 1px solid #fff;
-}
-
-#boardHard .valid {
-    width: 38px;
-    height: 38px;
-    background-color: grey;
-    border: 1px solid #fff;
-}
-
-.cell.revealed {
-    background-color: #f0f0f0;
-    /* 翻开的格子的颜色 */
 }

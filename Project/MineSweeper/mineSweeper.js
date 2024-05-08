@@ -2,7 +2,6 @@ const selectElement = document.querySelector(".form-select");
 createGameBoard("boardNormal");
 selectElement.addEventListener("change", (event) => {
     const selectedBoard = event.target.value;
-    // Perform actions based on the selected option
     createGameBoard(`${selectedBoard}`);
 });
 
@@ -19,27 +18,27 @@ function createGameBoard(boardType) {
     } else if (boardType == "boardMedium") {
         var width = 45;
         var height = 20;
-        var mines = 400;
+        var mines = 100;
     } else {
         var width = 10;
         var height = 10;
-        var mines = 20;
+        var mines = 15;
     }
-    var f = [];
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
             const boardChoose = document.getElementById(boardType);
-            f.push([y, x]);
             var cell = document.createElement('div');
             cell.setAttribute("data-x", x);
             cell.setAttribute("data-y", y);
+            cell.classList.add("cell");
             boardChoose.appendChild(cell);
-            cell.addEventListener("click", function() {
-                console.log(this);
+            cell.addEventListener("click", function () {
+                clickedCell(this);
             });
 
-            cell.addEventListener("click", function() {
-                
+            cell.addEventListener("contextmenu", function (event) {
+                event.preventDefault();
+                flagCell(this);
             });
         }
     }
@@ -58,40 +57,444 @@ function createGameBoard(boardType) {
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
             const cell = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
-            
             if (!cell.classList.contains("mines")) {
-                // 如果单元格不包含地雷，则添加 'valid' 类
                 cell.classList.add("valid");
             }
         }
     }
-    
+
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
-            const cell = document.querySelector(`[class="valid"][data-x="${x}"][data-y="${y}"]`);
-            let totalMines = 0;
-            for (let yOffset = -1; yOffset <= 1; yOffset++) {
-                for (let xOffset = -1; xOffset <= 1; xOffset++) {
-                    if (xOffset === 0 && yOffset === 0) {
-                        // Ignore the current cell itself
-                        continue;
-                    }
-                    console.log(xOffset, yOffset);
-                    // const adjacentX = x + xOffset;
-                    // const adjacentY = y + yOffset;
-            
-                    // // Check if the adjacent cell exists and contains a mine
-                    // if (adjacentX >= 0 && adjacentX < width && adjacentY >= 0 && adjacentY < height) {
-                    //     const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
-                    //     if (adjacentCell.contains("mines")) {
-                    //         totalMines += 1;
-                    //     }
-                    // }
-                }
+            const cell = document.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+            if (cell.classList.contains('mines')) {
+                continue;
             }
-            
-            // Add data property for the current cell containing the total number of surrounding mines
-            // cell.setAttribute("data-total", totalMines);
+            let totalMines = 0;
+            if (x == 0 && y == 0) {
+                for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                    for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
+            else if (x == 0 && y == height - 1) {
+                for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                    for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
+            else if (x == width - 1 && y == 0) {
+                for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
+            else if (x == width - 1 && y == height - 1) {
+                for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
+            else if (x == 0) {
+                for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                    for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
+            else if (y == 0) {
+                for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
+            else if (x == width - 1) {
+                for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
+            else if (y == height - 1) {
+                for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
+            else {
+                for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        if (adjacentCell.classList.contains("mines")) {
+                            totalMines += 1;
+                        }
+                    }
+                }
+                cell.setAttribute("data-total", totalMines);
+            }
         }
     }
+
+    function clickedCell(cell) {
+        if (cell.classList.contains("mines")) {
+            gameOver(cell);
+        }
+        else {
+            let total = cell.getAttribute("data-total");
+            if (total != 0) {
+                cell.classList.add("checked");
+                if (total == 1) {
+                    cell.classList.add("one");
+                    cell.classList.add("checked");
+                    cell.classList.remove("valid");
+                }
+                else if (total == 2) {
+                    cell.classList.add("two");
+                    cell.classList.remove("valid");
+                }
+                else if (total == 3) {
+                    cell.classList.add("three");
+                    cell.classList.remove("valid");
+                }
+                else if (total == 4) {
+                    cell.classList.add("four");
+                    cell.classList.remove("valid");
+                }
+                else if (total == 5) {
+                    cell.classList.add("five");
+                    cell.classList.remove("valid");
+                }
+                else if (total == 6) {
+                    cell.classList.add("six");
+                    cell.classList.remove("valid");
+                }
+                else if (total == 7) {
+                    cell.classList.add("seven");
+                    cell.classList.remove("valid");
+                }
+                else if (total == 8) {
+                    cell.classList.add("eight");
+                    cell.classList.remove("valid");
+                }
+                cell.innerHTML = total;
+                return;
+            }
+            cell.classList.add("checked");
+            cell.classList.remove("valid");
+            checkCell(cell);
+        }
+    }
+
+    function checkCell(cell) {
+        const x = parseInt(cell.getAttribute("data-x"), 10);
+        const y = parseInt(cell.getAttribute("data-y"), 10);
+        setTimeout(function () {
+            if (x == 0 && y == 0) {
+                for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                    for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked"))  {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            adjacentCell.classList.remove("valid");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.remove("valid");
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+            else if (x == 0 && y == height - 1) {
+                for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                    for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+            else if (x == width - 1 && y == 0) {
+                for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+            else if (x == width - 1 && y == height - 1) {
+                for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+            else if (x == 0) {
+                for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                    for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+            else if (y == 0) {
+                for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+            else if (x == width - 1) {
+                for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+            else if (y == height - 1) {
+                for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+            else {
+                for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                    for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                        if (xOffset === 0 && yOffset === 0) {
+                            continue;
+                        }
+                        const adjacentX = x + xOffset;
+                        const adjacentY = y + yOffset;
+                        const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                        const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
+                            continue;
+                        } else if (dataTotal == 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        } else if (dataTotal > 0) {
+                            adjacentCell.classList.add("checked");
+                            clickedCell(adjacentCell);
+                        }
+                    }
+                }
+            }
+        }, 10)
+    }
+    let flag = 0;
+    function flagCell(cell) {
+        if (cell.classList.contains("flag")) {
+            cell.classList.remove("flag");
+            cell.innerHTML = "";
+            flag -= 1;
+        } else if (!cell.classList.contains("checked")) {
+            cell.classList.add("flag");
+            cell.innerHTML = "F";
+            flag += 1;
+        }
+    }
+}
+
+function gameOver() {
+    alert("Game Over");
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach(function (cell) {
+        if (cell.classList.contains("mines")) {
+            cell.innerHTML = "X";
+            cell.classList.remove("mines");
+            cell.classList.add("checked");
+        }
+    })
 }
