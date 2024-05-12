@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>扫坤大作战</title>
     <link rel="stylesheet" href="mineSweeper.css">
 </head>
+
 <body>
     <div class="container">
         <h1>扫雷游戏</h1>
         <div class="show">
-            <div class="flagLeft">捕捉器还剩下：<span class="flags">1</span></div>
-            <div class="changeToFlag"><input type="checkbox"><img src="flag.png" alt="flag" class="flag">
+            <div>捕捉器还剩下：<span class="flagLeft">1</span></div>
+            <div class="changeToFlag">
+                <label class="switch">
+                    <input type="checkbox" id="flagSwitch"><span class="flagC"></span>
+                </label>
             </div>
+            <div>
                 <label class="input-group-text">游戏难度</label>
                 <select class="form-select" id="inputGroupSelect01">
                     <option selected value="boardNormal">普通</option>
                     <option value="boardMedium">中等</option>
                     <option value="boardHard">困难</option>
                 </select>
+            </div>
         </div>
         <div id="board">
         </div>
         <div id="gameOver" class="gameOver">
             <div class="gameOverText">
-                <p>是否重新来过？</p>
+                <p>你已失败，是否重新来过？</p>
+                <button class="btn" onclick="close()">退出</button>
+                <button class="btn" onclick="restart()">重新</button>
+            </div>
+        </div>
+        <div id="win" class="win">
+            <div class="winText">
+                <p>恭喜你已胜利，是否重新来过？</p>
                 <button class="btn" onclick="close()">退出</button>
                 <button class="btn" onclick="restart()">重新</button>
             </div>

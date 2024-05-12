@@ -218,61 +218,72 @@ function createGameBoard(boardType) {
     }
 
     function clickedCell(cell) {
-        if (cell.classList.contains("mines")) {
-            gameOver(cell);
-        }
-        else {
-            let total = cell.getAttribute("data-total");
-            if (total != 0) {
-                cell.classList.add("checked");
-                if (total == 1) {
-                    cell.classList.add("one");
-                    cell.classList.remove("valid");
-                    detectCell(cell);
-                }
-                else if (total == 2) {
-                    cell.classList.add("two");
-                    cell.classList.remove("valid");
-                    detectCell(cell);
-                }
-                else if (total == 3) {
-                    cell.classList.add("three");
-                    cell.classList.remove("valid");
-                    detectCell(cell);
-                }
-                else if (total == 4) {
-                    cell.classList.add("four");
-                    cell.classList.remove("valid");
-                    detectCell(cell);
-                }
-                else if (total == 5) {
-                    cell.classList.add("five");
-                    cell.classList.remove("valid");
-                    detectCell(cell);
-                }
-                else if (total == 6) {
-                    cell.classList.add("six");
-                    cell.classList.remove("valid");
-                    detectCell(cell);
-                }
-                else if (total == 7) {
-                    cell.classList.add("seven");
-                    cell.classList.remove("valid");
-                    detectCell(cell);
-                }
-                else if (total == 8) {
-                    cell.classList.add("eight");
-                    cell.classList.remove("valid");
-                    detectCell(cell);
-                }
-                cell.innerHTML = total;
-                return;
+        const switchFlag = document.getElementById("flagSwitch");
+        if (switchFlag.checked) {
+            flagCell(cell);
+        } else {
+            if (cell.classList.contains("mines")) {
+                gameOver(cell);
             }
-            cell.classList.add("checked");
-            cell.classList.remove("valid");
-            checkCell(cell);
+            else {
+
+                let total = cell.getAttribute("data-total");
+                if (total != 0) {
+                    cell.classList.add("checked");
+                    if (total == 1) {
+                        cell.classList.add("one");
+                        cell.classList.remove("valid");
+                        detectCell(cell);
+                    }
+                    else if (total == 2) {
+                        cell.classList.add("two");
+                        cell.classList.remove("valid");
+                        detectCell(cell);
+                    }
+                    else if (total == 3) {
+                        cell.classList.add("three");
+                        cell.classList.remove("valid");
+                        detectCell(cell);
+                    }
+                    else if (total == 4) {
+                        cell.classList.add("four");
+                        cell.classList.remove("valid");
+                        detectCell(cell);
+                    }
+                    else if (total == 5) {
+                        cell.classList.add("five");
+                        cell.classList.remove("valid");
+                        detectCell(cell);
+                    }
+                    else if (total == 6) {
+                        cell.classList.add("six");
+                        cell.classList.remove("valid");
+                        detectCell(cell);
+                    }
+                    else if (total == 7) {
+                        cell.classList.add("seven");
+                        cell.classList.remove("valid");
+                        detectCell(cell);
+                    }
+                    else if (total == 8) {
+                        cell.classList.add("eight");
+                        cell.classList.remove("valid");
+                        detectCell(cell);
+                    }
+                    cell.innerHTML = total;
+                    checkWin();
+                    return;
+                    
+                }
+                cell.classList.add("checked");
+                cell.classList.remove("valid");
+                checkCell(cell);
+                checkWin();
+                
+            }
         }
     }
+
     function detectCell(cell) {
         const x = parseInt(cell.getAttribute("data-x"), 10);
         const y = parseInt(cell.getAttribute("data-y"), 10);
@@ -655,6 +666,7 @@ function createGameBoard(boardType) {
                 }
             }
         }, 10)
+        
     }
     let flag = 0;
     function flagCell(cell) {
@@ -668,8 +680,22 @@ function createGameBoard(boardType) {
             flag += 1;
         }
     }
+    function checkWin() {
+        const cells = document.querySelectorAll('.cell');
+        let check = 0;
+        cells.forEach((cell) => {
+            if (cell.classList.contains('checked')) {
+                check++
+            }
+        });
+        console.log(check);
+        if (check == width * height - mines) {
+            console.log("You Win!");
+            const win = document.getElementById('win');
+            win.style.display = "block";
+        }
+    }
 }
-
 function gameOver() {
     const gameOver = document.getElementById('gameOver');
     gameOver.style.display = "block";
@@ -681,7 +707,7 @@ function gameOver() {
             cell.classList.add("checked");
         }
     })
-    
+
 }
 function restart() {
     const selectElement = document.querySelector(".form-select");
