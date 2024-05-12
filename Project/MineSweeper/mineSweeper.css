@@ -9,13 +9,16 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
+.show {
+    display: flex;
+    width: 60%;
+    justify-content: space-evenly;
+}
 #boardNormal {
     width: 400px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: aquamarine;
 }
 
 .checked, .flag {
@@ -82,11 +85,10 @@ body {
 }
 
 #boardMedium {
-    width: 900px;
+    width: 500px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: aquamarine;
 }
 
 #boardMedium .checked , #boardMedium .flag{
@@ -109,28 +111,54 @@ body {
 }
 
 #boardHard {
-    width: 400px;
+    width: 900px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: aquamarine;
 }
 
 #boardHard .checked , #boardHard .flag{
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background-color: lightgray;
     border: 1px solid #fff;
     box-sizing: border-box;
     text-align: center;
-    font-size: 30px;
+    font-size: 15px;
     user-select: none;
 }
 
 #boardHard .valid ,#boardHard .mines{
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background-color: grey;
     border: 1px solid #fff;
     box-sizing: border-box;
+}
+
+.gameOver {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.gameOverText {
+    background-color: rgba(255, 255, 255, 0.685);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    text-align: center;
+}
+
+.btn {
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
 }

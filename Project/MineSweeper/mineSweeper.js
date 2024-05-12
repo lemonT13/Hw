@@ -12,13 +12,13 @@ function createGameBoard(boardType) {
     boardChoose.id = boardType;
     board.appendChild(boardChoose);
     if (boardType == "boardHard") {
-        var width = 50;
-        var height = 50;
-        var mines = 800;
-    } else if (boardType == "boardMedium") {
         var width = 45;
         var height = 20;
         var mines = 100;
+    } else if (boardType == "boardMedium") {
+        var width = 25;
+        var height = 20;
+        var mines = 70;
     } else {
         var width = 10;
         var height = 10;
@@ -227,36 +227,43 @@ function createGameBoard(boardType) {
                 cell.classList.add("checked");
                 if (total == 1) {
                     cell.classList.add("one");
-                    cell.classList.add("checked");
                     cell.classList.remove("valid");
+                    detectCell(cell);
                 }
                 else if (total == 2) {
                     cell.classList.add("two");
                     cell.classList.remove("valid");
+                    detectCell(cell);
                 }
                 else if (total == 3) {
                     cell.classList.add("three");
                     cell.classList.remove("valid");
+                    detectCell(cell);
                 }
                 else if (total == 4) {
                     cell.classList.add("four");
                     cell.classList.remove("valid");
+                    detectCell(cell);
                 }
                 else if (total == 5) {
                     cell.classList.add("five");
                     cell.classList.remove("valid");
+                    detectCell(cell);
                 }
                 else if (total == 6) {
                     cell.classList.add("six");
                     cell.classList.remove("valid");
+                    detectCell(cell);
                 }
                 else if (total == 7) {
                     cell.classList.add("seven");
                     cell.classList.remove("valid");
+                    detectCell(cell);
                 }
                 else if (total == 8) {
                     cell.classList.add("eight");
                     cell.classList.remove("valid");
+                    detectCell(cell);
                 }
                 cell.innerHTML = total;
                 return;
@@ -264,6 +271,182 @@ function createGameBoard(boardType) {
             cell.classList.add("checked");
             cell.classList.remove("valid");
             checkCell(cell);
+        }
+    }
+    function detectCell(cell) {
+        const x = parseInt(cell.getAttribute("data-x"), 10);
+        const y = parseInt(cell.getAttribute("data-y"), 10);
+        if (x == 0 && y == 0) {
+            for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        adjacentCell.classList.remove("valid");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
+        }
+        else if (x == 0 && y == height - 1) {
+            for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
+        }
+        else if (x == width - 1 && y == 0) {
+            for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
+        }
+        else if (x == width - 1 && y == height - 1) {
+            for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
+        }
+        else if (x == 0) {
+            for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                for (let xOffset = 0; xOffset <= 1; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
+        }
+        else if (y == 0) {
+            for (let yOffset = 0; yOffset <= 1; yOffset++) {
+                for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
+        }
+        else if (x == width - 1) {
+            for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                for (let xOffset = -1; xOffset <= 0; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
+        }
+        else if (y == height - 1) {
+            for (let yOffset = -1; yOffset <= 0; yOffset++) {
+                for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
+        }
+        else {
+            for (let yOffset = -1; yOffset <= 1; yOffset++) {
+                for (let xOffset = -1; xOffset <= 1; xOffset++) {
+                    if (xOffset === 0 && yOffset === 0) {
+                        continue;
+                    }
+                    const adjacentX = x + xOffset;
+                    const adjacentY = y + yOffset;
+                    const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
+                    const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
+                    if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked") || dataTotal > 0) {
+                        continue;
+                    } else if (dataTotal == 0) {
+                        adjacentCell.classList.add("checked");
+                        clickedCell(adjacentCell);
+                    }
+                }
+            }
         }
     }
 
@@ -281,7 +464,7 @@ function createGameBoard(boardType) {
                         const adjacentY = y + yOffset;
                         const adjacentCell = document.querySelector(`[data-x="${adjacentX}"][data-y="${adjacentY}"]`);
                         const dataTotal = parseInt(adjacentCell.getAttribute("data-total"), 10);
-                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked"))  {
+                        if (adjacentCell.classList.contains("mines") || adjacentCell.classList.contains("flag") || adjacentCell.classList.contains("checked")) {
                             continue;
                         } else if (dataTotal == 0) {
                             adjacentCell.classList.add("checked");
@@ -488,7 +671,8 @@ function createGameBoard(boardType) {
 }
 
 function gameOver() {
-    alert("Game Over");
+    const gameOver = document.getElementById('gameOver');
+    gameOver.style.display = "block";
     const cells = document.querySelectorAll(".cell");
     cells.forEach(function (cell) {
         if (cell.classList.contains("mines")) {
@@ -497,4 +681,16 @@ function gameOver() {
             cell.classList.add("checked");
         }
     })
+    
+}
+function restart() {
+    const selectElement = document.querySelector(".form-select");
+    const difficulty = selectElement.value;
+    createGameBoard(difficulty);
+    const gameOver = document.getElementById('gameOver');
+    gameOver.style.display = "none";
+}
+
+function close() {
+    window.close();
 }
