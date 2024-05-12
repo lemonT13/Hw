@@ -714,7 +714,9 @@ function restart() {
     const difficulty = selectElement.value;
     createGameBoard(difficulty);
     const gameOver = document.getElementById('gameOver');
+    const win = document.getElementById('win');
     gameOver.style.display = "none";
+    win.style.display = "none";
 }
 
 function close() {
