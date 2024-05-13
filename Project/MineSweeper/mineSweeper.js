@@ -14,11 +14,11 @@ function createGameBoard(boardType) {
     if (boardType == "boardHard") {
         var width = 45;
         var height = 20;
-        var mines = 100;
+        var mines = 150;
     } else if (boardType == "boardMedium") {
         var width = 25;
         var height = 20;
-        var mines = 70;
+        var mines = 100;
     } else {
         var width = 10;
         var height = 10;
@@ -225,8 +225,7 @@ function createGameBoard(boardType) {
             if (cell.classList.contains("mines")) {
                 gameOver(cell);
             }
-            else {
-
+            else if (!cell.classList.contains("flag")){
                 let total = cell.getAttribute("data-total");
                 if (total != 0) {
                     cell.classList.add("checked");
@@ -688,11 +687,15 @@ function createGameBoard(boardType) {
                 check++
             }
         });
-        console.log(check);
         if (check == width * height - mines) {
-            console.log("You Win!");
             const win = document.getElementById('win');
             win.style.display = "block";
+            const selectElement = document.querySelector(".form-select");
+            const difficulty = selectElement.value;
+            if (difficulty == "boardHard") {
+                const button = document.querySelector(".nextBtn");
+                button.style.display = "none";
+            }
         }
     }
 }
@@ -719,6 +722,14 @@ function restart() {
     win.style.display = "none";
 }
 
-function close() {
-    window.close();
+function next() {
+    const selectElement = document.querySelector(".form-select");
+    const difficulty = selectElement.value;
+    const win = document.getElementById('win');
+    if (difficulty == "boardNormal") {
+        createGameBoard("boardMedium");
+    } else {
+        createGameBoard("boardHard");
+    }
+    win.style.display = "none";
 }

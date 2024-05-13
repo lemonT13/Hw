@@ -74,9 +74,7 @@ input:checked+.flagC {
     border: 1px solid #fff;
     box-sizing: border-box;
 }
-#boardNormal .mines {
-    background-color: red;
-}
+
 .one {
     color: #96d35f;
 }
