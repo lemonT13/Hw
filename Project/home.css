@@ -40,19 +40,20 @@ body.header-fixed header {
 }
 
 .inner {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
-.logo {
+.logo img{
   float: left;
-  color: #fff;
-  font-size: 50px;
+  width: 200px;
   transition: 0.7s all;
 }
 
-body.header-fixed .logo {
-  font-size: 30px;
+
+
+body.header-fixed .logo img {
+  width: 100px;
 }
 
 .nav_item {
@@ -109,8 +110,9 @@ body.header-fixed .logo {
 
 .container {
   background-color: rgb(83, 173, 14);
-  padding-top: 125px;
+  padding-top: 183px;
   position: relative;
+  display: grid;
 }
 
 section, footer {
@@ -123,9 +125,8 @@ section{
 
 .home {
   background-color: aquamarine;
-  top:125px;
-  scroll-margin-top: 125px;
-  height: calc(100vh - 125px);
+  scroll-margin-top: 183px;
+  height: calc(100vh - 183px);
 }
 
 .scroll {
