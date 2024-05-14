@@ -4,21 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>扫坤大作战</title>
+    <title>扫鸡大作战</title>
     <link rel="stylesheet" href="mineSweeper.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>扫雷游戏</h1>
+        <h1>扫鸡游戏</h1>
         <div class="show">
-            <div>捕捉器还剩下：<span class="flagLeft">1</span></div>
+            <div><span class="flagLeft"></span></div>
             <div class="changeToFlag">
                 <label class="switch">
                     <input type="checkbox" id="flagSwitch"><span class="flagC"></span>
                 </label>
             </div>
-            <div>
+            <div class="choose">
                 <label class="input-group-text">游戏难度</label>
                 <select class="form-select" id="inputGroupSelect01">
                     <option selected value="boardNormal">普通</option>
@@ -39,7 +39,7 @@
             <div class="winText">
                 <p>恭喜你已胜利!</p>
                 <button class="btn" onclick="restart()">重玩</button>
-                <button class="nextBtn" onclick="next()">下一个难度</button>
+                <button class="nextBtn btn" onclick="next()">下一个难度</button>
             </div>
         </div>
     </div>

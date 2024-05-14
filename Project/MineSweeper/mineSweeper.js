@@ -12,18 +12,20 @@ function createGameBoard(boardType) {
     boardChoose.id = boardType;
     board.appendChild(boardChoose);
     if (boardType == "boardHard") {
-        var width = 45;
+        var width = 50;
         var height = 20;
-        var mines = 150;
+        var mines = 200;
     } else if (boardType == "boardMedium") {
         var width = 25;
-        var height = 20;
-        var mines = 100;
+        var height = 16;
+        var mines = 90;
     } else {
         var width = 10;
         var height = 10;
         var mines = 15;
     }
+    const flagLeft = document.querySelector(".flagLeft");
+    flagLeft.innerHTML = `${mines}`;
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
             const boardChoose = document.getElementById(boardType);
@@ -667,17 +669,17 @@ function createGameBoard(boardType) {
         }, 10)
         
     }
-    let flag = 0;
+    let flag = mines;
     function flagCell(cell) {
+        const flagLeft = document.querySelector(".flagLeft");
         if (cell.classList.contains("flag")) {
             cell.classList.remove("flag");
-            cell.innerHTML = "";
-            flag -= 1;
-        } else if (!cell.classList.contains("checked")) {
-            cell.classList.add("flag");
-            cell.innerHTML = "F";
             flag += 1;
+        } else if (!cell.classList.contains("checked") && flag > 0) {
+            cell.classList.add("flag");
+            flag -= 1;
         }
+        flagLeft.innerHTML = `${flag}`;
     }
     function checkWin() {
         const cells = document.querySelectorAll('.cell');
@@ -704,9 +706,19 @@ function gameOver() {
     gameOver.style.display = "block";
     const cells = document.querySelectorAll(".cell");
     cells.forEach(function (cell) {
-        if (cell.classList.contains("mines")) {
-            cell.innerHTML = "X";
+        if (cell.classList.contains("flag") && cell.classList.contains("mines")) {
             cell.classList.remove("mines");
+            cell.classList.remove("flag");
+            cell.classList.add("correct");
+            cell.classList.add("checked");
+        } else if (cell.classList.contains("mines")) {
+            cell.classList.remove("mines");
+            cell.classList.add("explode");
+            cell.classList.add("checked");
+        } else if (cell.classList.contains("flag")) {
+            cell.classList.remove("flag");
+            cell.classList.remove("valid");
+            cell.classList.add("wrong");
             cell.classList.add("checked");
         }
     })
