@@ -61,10 +61,9 @@ input:checked+.flagC {
 
 .form-select {
     display: inline-block;
-    background-color: #fff;    
+    background-color: rgba(0, 0, 0, 0);    
     border: none;
     border-left: #888 2px solid;
-
     transition: all .5s ease;
     font-size: 30px;
     color: #474747;
@@ -171,7 +170,7 @@ input:checked+.flagC {
     border: 1px solid #fff;
     box-sizing: border-box;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     user-select: none;
 }
 
