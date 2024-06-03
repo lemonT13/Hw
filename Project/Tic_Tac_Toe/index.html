@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="TTT.css">
+    <title>牛马游戏</title>
+</head>
+
+<body>
+    <button class="backBtn" onclick="window.location.href='../home/index.html#project'">返回主页</button>
+    <h1>牛马游戏</h1>
+    <div class="container">
+        <div class="choose">
+            <div class="pTurn turn pCow"></div>
+            <div class="player"></div>
+            <div class="turn pHorse"></div>
+        </div>
+        <div class="board">
+            <div class="cell c1"><div class="c" onclick="play(this, 0)"></div></div>
+            <div class="cell c2"><div class="c" onclick="play(this, 1)"></div></div>
+            <div class="cell c3"><div class="c" onclick="play(this, 2)"></div></div>
+            <div class="cell c4"><div class="c" onclick="play(this, 3)"></div></div>
+            <div class="cell c5"><div class="c" onclick="play(this, 4)"></div></div>
+            <div class="cell c6"><div class="c" onclick="play(this, 5)"></div></div>
+            <div class="cell c7"><div class="c" onclick="play(this, 6)"></div></div>
+            <div class="cell c8"><div class="c" onclick="play(this, 7)"></div></div>
+            <div class="cell c9"><div class="c" onclick="play(this, 8)"></div></div>
+        </div>
+    </div>
+    <div id="win" class="win">
+        <div class="winText">
+            <p>恭喜<span class="winner"></span>胜利! <br>是否重新游玩？</p>
+            <button class="btn" onclick="restart()">重玩</button>
+        </div>
+    </div>
+    <div id="draw" class="draw">
+        <div class="drawText">
+            <p>平局! <br>是否重新游玩？</p>
+            <button class="btn" onclick="restart()">重玩</button>
+        </div>
+    </div>
+    <script src="TTT.js"></script>
+</body>
+
+</html>
