@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+    <link rel="icon" href="img/logo.png">
+
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="ano.css">
+    <link rel="stylesheet" href="aboutUs.css">
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="scroll.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="appendix.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="indicator">
+            <li><a href="#home"><span class="sr-only">home</span></a></li>
+            <li><a href="#aboutUs"><span class="sr-only">about us</span></a></li>
+            <li><a href="#project"><span class="sr-only">project</span></a></li>
+            <li><a href="#appendix"><span class="sr-only">appendix</span></a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="home" class="section">
+            <div class="content homeCon">
+                <h1 style="color: aliceblue;">hello</h1>
+            </div>
+        </section>
+        <section id="aboutUs" class="section">
+            <div class="content aboutCon">
+                <div class="intro">
+                    <div>我们的组员有</div>
+                    <ul class="animated-txt">
+                        <li><span>冼钧昊</span></li>
+                        <li><span>李威雄</span></li>
+                        <li><span>黄绍峰</span></li>
+                        <li><span>陈光祖</span></li>
+                    </ul>
+                </div>
+                <div class="personImg">
+                    <div class="imgCol">
+                        <div class="imgCon">
+                            <div class="imgInner img1">
+                                <img src="" alt="background" class="circle img1">
+                                <img src="img/SJH.png" alt="person1" class="img img1">
+                            </div>
+                            <div class="des des1">负责编写代码</div>
+                        </div>
+                        <div class="imgCon">
+                            <div class="imgInner img2">
+                                <img src="" alt="background" class="circle img2">
+                                <img src="img/LWX.png" alt="person2" class="img img2">
+                            </div>
+                            <div class="des des2">负责设计框架</div>
+                        </div>
+                    </div>
+                    <div class="imgCol">
+                        <div class="imgCon">
+                            <div class="imgInner img3">
+                                <img src="" alt="background" class="circle img3">
+                                <img src="img/WSF.png" alt="person3" class="img img3">
+                            </div>
+                            <div class="des des3">负责寻找灵感</div>
+                        </div>
+                        <div class="imgCon">
+                            <div class="imgInner img4">
+                                <img src="" alt="background" class="circle img4">
+                                <img src="img/CKJ.png" alt="person3" class="img img4">
+                            </div>
+                            <div class="des des4">负责光猪肝红</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="project" class="section">
+            <div class="content projectCon">
+                <div class="slider">
+                    <button class="slider--btn slider--btn__prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div class="slides__wrapper">
+                        <div class="slides">
+                            <!-- slide 1 -->
+                            <div class="slide" data-link="MineSweeper" data-current>
+                                <div class="slide__inner">
+                                    <div class="slide--image__wrapper">
+                                        <img class="slide--image" src="img/mineSweeper.png" alt="扫鸡大作战" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide__bg" style="--bg: url(img/mineSweeper.png); --dir: 0" data-current></div>
+
+                            <!-- slide 2 -->
+                            <div class="slide" data-link="Tic_Tac_Toe" data-next>
+                                <div class="slide__inner">
+                                    <div class="slide--image__wrapper">
+                                        <img class="slide--image" src="img/TTT.png" alt="牛马游戏" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide__bg" style="--bg: url(img/TTT.png); --dir: 1" data-next></div>
+
+                            <!-- slide 3 -->
+                            <div class="slide" data-link="Chess" data-previous>
+                                <div class="slide__inner">
+                                    <div class="slide--image__wrapper">
+                                        <img class="slide--image" src="https://source.unsplash.com/m7K4KzL5aQ8"
+                                            alt="Image 1" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide__bg" style="--bg: url(https://source.unsplash.com/m7K4KzL5aQ8); --dir: -1"
+                                data-previous>
+                            </div>
+                        </div>
+                        <div class="slides--infos">
+                            <!-- Slide Info 1 -->
+                            <div class="slide-info" data-current>
+                                <div class="slide-info__inner">
+                                    <div class="slide-info--text__wrapper">
+                                        <div data-title class="slide-info--text">
+                                            <span>Cluck Sweep!</span>
+                                        </div>
+                                        <div data-description class="slide-info--text">
+                                            <span>Chicken chase chaos!<br>Hen-house mayhem!</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide Info 2 -->
+                            <div class="slide-info" data-next>
+                                <div class="slide-info__inner">
+                                    <div class="slide-info--text__wrapper">
+                                        <div data-title class="slide-info--text">
+                                            <span>Neigh or Moo?</span>
+                                        </div>
+                                        <div data-description class="slide-info--text">
+                                            <span>Cow or Horse?<br>Horse or Cow?</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide Info 3 -->
+                            <div class="slide-info" data-previous>
+                                <div class="slide-info__inner">
+                                    <div class="slide-info--text__wrapper">
+                                        <div data-title class="slide-info--text">
+                                            <span>Chamonix</span>
+                                        </div>
+                                        <div data-description class="slide-info--text">
+                                            <span>Let your dreams come true</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="slider--btn slider--btn__next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section id="appendix" class="section">
+            <div class="content appendixCon">
+                <div class="appendixWeb">
+                    <div class="title">Image</div>
+                    <div class="link">
+                        <a href="https://i.pinimg.com/originals/7a/e3/c7/7ae3c7ad104a968dc735871c0bf17608.gif">Home Page
+                            Background</a><br>
+                        <div class="subtitle">Cluck Sweep!</div>
+                        <a href="https://huemint.com/gradient-9/">Color</a><br>
+                        <a
+                            href="https://www.flaticon.com/free-icon/cage_1018402?term=cage&page=1&position=2&origin=search&related_id=1018402">Cage</a>
+                        <a href="">chicken basketball</a><br>
+                        <a href="https://www.canva.com/">cage + chicken</a><br>
+                        <a
+                            href="https://www.flaticon.com/free-icon/close_2997911?term=x&page=1&position=13&origin=search&related_id=2997911">X</a>
+                        <div class="subtitle"></div>
+                    </div>
+                </div>
+                <div class="seperate"></div>
+                <div class="appendixWeb">
+                    <div class="title">Code</div>
+                    <div class="link">
+                        <a href="https://code.fittentech.com/">Code Support</a><br>
+                        <a href="https://codepen.io/giana/pen/BabdgjB">Scroll Animation</a><br>
+                        <a href="https://www.youtube.com/watch?v=CqBEmgkR_fQ">Typing Animation</a><br>
+                        <a href="https://codepen.io/dev_loop/pen/MWKbJmO">Project Animation</a><br>
+                        <a href="https://www.youtube.com/watch?v=tWAGIU3GUk4&list=PLwJhhWUZudKp7QPVALB_kXUyzj8cBB__L">Wave
+                            Animation</a><br>
+                        <a href="https://www.youtube.com/watch?v=jS7iB9mRvcc&list=LL&index=4">Cluck Sweep!</a><br>
+                    </div>
+                </div>
+            </div>
+            <div class="line line1">
+                <div class="wave wave1" style="background-image: url(img/wave1.png);"></div>
+            </div>
+            <div class="line line2">
+                <div class="wave wave2" style="background-image: url(img/wave2.png);"></div>
+            </div>
+            <div class="line line3">
+                <div class="wave wave3" style="background-image: url(img/wave3.png);"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="box"></div>
+    </footer>
+    <script src="project.js"></script>
+</body>

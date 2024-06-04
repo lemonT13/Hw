@@ -1,0 +1,166 @@
+:root {
+    --min-tap-space: 8px;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+*,
+::before,
+::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+}
+
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+* {
+    --font-size-min: 16;
+    --font-size-max: 20;
+    --font-size-min-viewport: 320;
+    --font-size-max-viewport: 1440;
+
+    --font-size-units: calc(0.0625rem);
+
+    --_font-size-step: calc((var(--font-size-max) - var(--font-size-min)) / (var(--font-size-max-viewport) - var(--font-size-min-viewport)));
+
+    --_font-size-base-value: calc(var(--font-size-min) - var(--font-size-min-viewport) * var(--_font-size-step));
+
+    --font-size: clamp(min(var(--font-size-min), var(--font-size-max)) * var(--font-size-units),
+            var(--_font-size-base-value) * var(--font-size-units) + var(--_font-size-step) * 100vw,
+            max(var(--font-size-max), var(--font-size-min)) * var(--font-size-units));
+
+    --line-height-min: 1.2;
+    --line-height-max: 1.6;
+
+    --line-height-min-viewport: calc(320 / var(--font-size-min));
+    --line-height-max-viewport: calc(1440 / var(--font-size-max));
+
+    --_line-height-step: calc((var(--line-height-max) - var(--line-height-min)) / (var(--line-height-max-viewport) - var(--line-height-min-viewport)));
+
+    --_line-height-base-value: calc(var(--line-height-min) - var(--line-height-min-viewport) * var(--_line-height-step));
+}
+
+body {
+    --RHYTHM_UNITS: var(--font-size);
+
+    --RHYTHM: clamp(min(var(--line-height-min), var(--line-height-max)) * var(--RHYTHM_UNITS),
+            var(--_line-height-base-value) * var(--RHYTHM_UNITS) + var(--_line-height-step) * 100vw,
+            max(var(--line-height-max), var(--line-height-min)) * var(--RHYTHM_UNITS));
+
+    /* Here, a safe prop you can overwrite and play with as needed */
+    --spacing: var(--RHYTHM);
+
+    /* Let's save these just in case we need them */
+    --base-font-size-min: var(--font-size-min);
+    --base-font-size-max: var(--font-size-max);
+    --base-line-height-min: var(--line-height-min);
+    --base-line-height-max: var(--line-height-max);
+}
+
+
+
+/* Hides elements visually, leaves accessible to screenreaders */
+.sr-only {
+    border-width: 0;
+    clip: rect(0, 0, 0, 0);
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+}
+
+
+
+nav {
+    --indicator-number: 4;
+    --indicator-top: 50dvb;
+    --indicator-right: var(--spacing);
+
+    --indicator-size: 1em;
+    /* --indicator-padding: calc((var(--min-tap-size) - var(--indicator-size)) / 2); */
+    --indicator-clipped-margins: var(--indicator-padding) * 2;
+    --indicator-total-size: calc(var(--indicator-size) + var(--indicator-padding) * 2);
+
+    --indicator-gap: var(--min-tap-space);
+    --indicator-total-gap: calc(var(--indicator-gap) * (var(--indicator-number) - 1));
+
+    --indicator-total-height: calc(var(--indicator-total-size) * var(--indicator-number) + var(--indicator-total-gap) - var(--indicator-clipped-margins));
+    --indicator-padding: 0.25em;
+    position: fixed;
+    inset-block-start: var(--indicator-top);
+    inset-inline-end: var(--indicator-right);
+    /* -webkit-margin-before: calc(var(--indicator-total-height) / -2); */
+    margin-block-start: calc(var(--indicator-total-height) / -2);
+    z-index: 100;
+
+    & ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--indicator-gap);
+
+        &::before {
+            --size: calc(var(--indicator-size));
+            border-radius: 50%;
+            content: '';
+            color: var(--color-indicator, var(--color-text));
+            background-color: currentColor;
+            box-shadow: inset 0 0 0 2px white;
+            position: absolute;
+            inset-inline: 0;
+            margin-inline: auto;
+            padding: 3px;
+            width: var(--size);
+            height: var(--size);
+            z-index: -1;
+        }
+    }
+
+    & li:first-of-type {
+        -webkit-margin-before: calc(var(--indicator-padding) * -1);
+        margin-block-start: calc(var(--indicator-padding) * -1);
+    }
+
+    & li:last-of-type {
+        -webkit-margin-after: calc(var(--indicator-padding) * -1);
+        margin-block-end: calc(var(--indicator-padding) * -1);
+    }
+
+    & li,
+    & a {
+        display: block;
+    }
+
+    & a {
+        color: white;
+        padding: var(--indicator-padding);
+        &::before {
+            content: '';
+            border: 1px solid;
+            border-radius: 50%;
+            display: block;
+            width: var(--indicator-size);
+            height: var(--indicator-size);
+        }
+    }
+
+    & a:hover {
+        color: cornflowerblue;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding-block: var(--spacing);
+    padding-inline: inherit;
+    position: relative;
+    height: 100%;
+}

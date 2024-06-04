@@ -1,0 +1,78 @@
+html {
+  scroll-snap-type: y mandatory;
+  timeline-scope: --section, --main, --site-header;
+}
+
+main {
+  view-timeline: --main;
+}
+
+.section {
+  scroll-snap-align: start;
+  view-timeline: --section;
+  height: 100dvh;
+}
+
+.content {
+  /* Fix the content, so it doesn't scroll with the section */
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+
+  /* Animate the content based on the section scrolling */
+  --contrast: 4;
+  --blur: 0.5rem;
+
+  animation: blink ease both;
+  animation-timeline: --section;
+}
+
+.indicator::before {
+  animation: indicate linear both;
+  animation-timeline: --main;
+  animation-range: contain;
+}
+
+/* And we're manually setting the colors because see: lazy comment above */
+@keyframes indicate {
+  0% {
+    --color-indicator: red;
+    transform: translateY(0);
+  }
+
+  25% {
+    --color-indicator: blue;
+  }
+
+  75% {
+    --color-indicator: orange;
+  }
+
+  100% {
+    --color-indicator: purple;
+    transform: translateY(
+      calc(var(--indicator-total-height) - var(--indicator-size))
+    );
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    filter: blur(var(--blur)) contrast(var(--contrast));
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    filter: blur(0) contrast(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+/* 
+  The actual page styling is in a different stylesheet to not clutter
+  this pen with irrelevant or confusing code
+
+  https://codepen.io/giana/pen/rNRzgRj
+*/

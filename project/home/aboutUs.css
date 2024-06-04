@@ -1,0 +1,180 @@
+.aboutCon {
+    /* background-color: black; */
+    flex-direction: row;
+    justify-content: space-around;
+    background-image: url("https://i.pinimg.com/originals/7a/e3/c7/7ae3c7ad104a968dc735871c0bf17608.gif");
+    background-size: cover;
+}
+
+.intro {
+    display: flex;
+    font-size: 60px;
+    color: white;
+}
+
+.animated-txt {
+    margin-block-start: 0;
+    padding: 0;
+    padding-inline-start: 0;
+    height: 90px;
+    overflow: hidden;
+}
+
+.animated-txt li {
+    list-style: none;
+    color: white;
+    position: relative;
+    top: 0;
+    animation: go 8s steps(4) infinite;
+}
+
+@keyframes go {
+    100% {
+        top: -315px;
+    }
+}
+
+.animated-txt li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 90px;
+    width: 100%;
+    background-color: green;
+    border-left: 2px solid white;
+    animation: typing 2s steps(3) infinite;
+}
+
+@keyframes typing {
+
+    40%,
+    60% {
+        left: calc(100% + 2px);
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+.personImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgCol {
+    display: flex;
+    flex-direction: row;
+}
+
+.imgCon {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imgInner {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    position:relative;
+    overflow: hidden;
+}
+
+.circle {
+    display: block;
+    background-color: #fee7d3;
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+}
+
+.img {
+    width: 300px;
+    position: absolute;
+}
+
+.des {
+    color: white;
+    font-size: 20px;
+    z-index: 2;
+}
+
+.img1, .des1 {
+    animation: p1 8s infinite;
+}
+
+.img2, .des2 {
+    animation: p2 8s infinite;
+}
+
+.img3, .des3 {
+    animation: p3 8s infinite;
+}
+
+.img4, .des4 {
+    animation: p4 8s infinite;
+}
+
+
+
+@keyframes p1 {
+    13% {
+        transform: scale(1.2);
+    }
+
+    25% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes p2 {
+    25% {
+        transform: scale(1);
+    }
+
+    38% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes p3 {
+    50% {
+        transform: scale(1);
+    }
+
+    63% {
+        transform: scale(1.2);
+    }
+
+    75% {
+        transform: scale(1);
+    }
+}
+
+@keyframes p4 {
+    75% {
+        transform: scale(1);
+    }
+
+    88% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
