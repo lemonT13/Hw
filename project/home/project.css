@@ -36,7 +36,6 @@ button {
 
 .slider {
 	width: calc(3 * var(--slide-width));
-	height: calc(2 * var(--slide-height));
 	display: flex;
 	align-items: center;
 }
@@ -138,9 +137,6 @@ button {
 .slide:not([data-current]) {
 	--slide-scale: 1;
 	--slide-tz: 0;
-	/* --slide-tx: calc(var(--offset) * var(--slide-width) * 1.05); */
-	/* --slide-rotY: calc(var(--dir) * -45deg); */
-
 	pointer-events: none;
 }
 
@@ -312,50 +308,5 @@ button {
 		font-size: min(1.5cqw, 0.95rem);
 		font-family: var(--font-archivo);
 		font-weight: 300;
-	}
-}
-
-/* ------------------------------------------------ */
-/* -------------------- LOADER --------------------- */
-/* ------------------------------------------------ */
-
-.loader {
-	position: fixed;
-	inset: 0;
-
-	display: grid;
-	place-items: center;
-
-	background: #000;
-	z-index: 1000;
-
-	opacity: 1;
-	transition: opacity 0.5s ease-out;
-
-	.loader__text {
-		font-family: var(--font-clash-display);
-		font-size: clamp(2rem, 2vw, 5rem);
-		font-weight: 800;
-		color: #fff;
-	}
-}
-
-/* ------------------------------------------- */
-
-.support {
-	position: absolute;
-	right: 10px;
-	bottom: 10px;
-	padding: 10px;
-	display: flex;
-	a {
-		margin: 0 10px;
-		color: #fff;
-		font-size: 1.8rem;
-		backface-visibility: hidden;
-		transition: all 150ms ease;
-		&:hover {
-			transform: scale(1.1);
-		}
 	}
 }

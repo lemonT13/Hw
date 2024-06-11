@@ -6,57 +6,6 @@
     background-size: cover;
 }
 
-.intro {
-    display: flex;
-    font-size: 60px;
-    color: white;
-}
-
-.animated-txt {
-    margin-block-start: 0;
-    padding: 0;
-    padding-inline-start: 0;
-    height: 90px;
-    overflow: hidden;
-}
-
-.animated-txt li {
-    list-style: none;
-    color: white;
-    position: relative;
-    top: 0;
-    animation: go 8s steps(4) infinite;
-}
-
-@keyframes go {
-    100% {
-        top: -315px;
-    }
-}
-
-.animated-txt li::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    height: 90px;
-    width: 100%;
-    background-color: green;
-    border-left: 2px solid white;
-    animation: typing 2s steps(3) infinite;
-}
-
-@keyframes typing {
-
-    40%,
-    60% {
-        left: calc(100% + 2px);
-    }
-
-    100% {
-        left: 0;
-    }
-}
-
 .personImg {
     display: flex;
     flex-direction: column;
@@ -105,8 +54,10 @@
     z-index: 2;
 }
 
-.img1, .des1 {
-    animation: p1 8s infinite;
+.img1:hover {
+    transform: scale(1.1);
+    transition: transform 800ms ease;
+    /* animation: p1 8s infinite; */
 }
 
 .img2, .des2 {
