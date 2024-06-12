@@ -99,7 +99,7 @@ nav {
     inset-inline-end: var(--indicator-right);
     /* -webkit-margin-before: calc(var(--indicator-total-height) / -2); */
     margin-block-start: calc(var(--indicator-total-height) / -2);
-    z-index: 100;
+    z-index: 101;
 
     & ul {
         display: flex;
