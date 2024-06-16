@@ -81,3 +81,13 @@
         opacity: 1;
       }
 }
+
+@media screen and (max-width: 700px) {
+    .appendixCon {
+      flex-direction: column;
+      padding: 5rem 20vw;
+    }
+    .col {
+      width: 100%;
+    }
+  }

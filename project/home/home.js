@@ -13,7 +13,7 @@ window.addEventListener('scroll', function(event) {
     var col1 = document.querySelector('#col1');
     var col2 = document.querySelector('#col2');
     var col3 = document.querySelector('#col3');
-    if (scrollPosition > 2800) {
+    if (scrollPosition > (this.window.innerHeight + 90) / 4 * 3) {
         col1.classList.add('col11');
         col2.classList.add('col21');
         col3.classList.add('col31');

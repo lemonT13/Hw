@@ -3,32 +3,41 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.parallax {
-  /* The image used */
-  background-image: url("img_parallax.jpg");
-
-  /* Set a specific height */
-  min-height: 500px; 
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  .planet {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #3498db;
+  border-radius: 50%;
+  margin: 100px auto;
 }
+
+.moon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #f1c40f;
+  border-radius: 50%;
+  animation: rotateOrbit 5s linear infinite;
+}
+
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+
 </style>
 </head>
 <body>
-
-<p>Scroll Up and Down this page to see the parallax scrolling effect.</p>
-
-<div class="parallax"></div>
-
-<div style="height:1000px;background-color:red;font-size:36px">
-Scroll Up and Down this page to see the parallax scrolling effect.
-This div is just here to enable scrolling.
-Tip: Try to remove the background-attachment property to remove the scrolling effect.
-</div>
-
+  <div class="planet">
+    <div class="moon"></div>
+  </div>
 </body>
 </html>

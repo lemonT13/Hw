@@ -1,129 +1,276 @@
 .aboutCon {
-    /* background-color: black; */
-    flex-direction: row;
-    justify-content: space-around;
-    background-image: url("img/earth.jpg");
+    background-image: url("img/space.jpg");
     background-size: cover;
 }
-
-.personImg {
+.abtUsT {
+    position: absolute;
+    left: 5vw;
+    font-size: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-.imgCol {
-    display: flex;
-    flex-direction: row;
+.abtUsT span {
+    color: #faebd7;
+    text-shadow: 0 0 0 #faebd7;
+    animation: loading 2s ease-in-out infinite alternate;
+    height: 10vh;
 }
 
-.imgCon {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+@keyframes loading {
+    to {
+        text-shadow: 20px 0 70px #0b900b;
+        color: #0b900b;
+    }
 }
 
-.imgInner {
-    height: 300px;
-    width: 300px;
-    border-radius: 50%;
-    position:relative;
-    overflow: hidden;
+.abtUsT span:nth-child(2) {
+    animation-delay: 0.1s;
 }
 
-.circle {
-    display: block;
-    background-color: #fee7d3;
-    border-radius: 50%;
-    height: 300px;
-    width: 300px;
+.abtUsT span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.abtUsT span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.abtUsT span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.abtUsT span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.abtUsT span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+.abtUsT span:nth-child(8) {
+    animation-delay: 0.7s;
+}
+
+.sun {
+    background-image: url("img/sun.gif");
+    background-size: cover;
+    width: 40vh;
+    height: 40vh;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
 }
 
-.img {
-    width: 300px;
+.pOutline {
+    border-radius: 50%;
+    border: 1px dotted white;
     position: absolute;
-}
-
-.des {
-    color: white;
-    font-size: 20px;
-    z-index: 2;
-}
-
-.img1, .des1 {
-    animation: p1 8s infinite;
-}
-
-.img2, .des2 {
-    animation: p2 8s infinite;
-}
-
-.img3, .des3 {
-    animation: p3 8s infinite;
-}
-
-.img4, .des4 {
-    animation: p4 8s infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
 }
 
 
+.planet1Outline {
+    width: 34vh;
+    height: 34vh;
+}
 
-@keyframes p1 {
-    0% {
-        transform: scale(1);
+.planet1,
+.planet01 {
+    background-size: cover;
+    width: 5vh;
+    height: 5vh;
+    position: absolute;
+    top: calc(50% - 2.5vh);
+    left: calc(50% - 2.5vh);
+    z-index: 100;
+    animation: orbit1 5s linear infinite;
+}
+
+.planet1 {
+    background-image: url("img/planet1.gif");
+}
+
+.planet01 {
+    z-index: 101;
+}
+
+.planet1des {
+    display: none;
+    left: 6vh;
+}
+
+.perImg1 {
+    background-image: url("img/CKJ.png");
+
+}
+
+
+
+.planet2Outline {
+    width: 50vh;
+    height: 50vh;
+}
+
+.planet2,
+.planet02 {
+    background-size: cover;
+    width: 7vh;
+    height: 7vh;
+    position: absolute;
+    top: calc(50% - 3.5vh);
+    left: calc(50% - 3.5vh);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    animation: orbit2 8s linear infinite;
+}
+
+.planet2 {
+    background-image: url("img/planet2.gif");
+}
+
+.planet02 {
+    z-index: 101;
+}
+
+.planet2des {
+    display: none;
+    left: 8vh;
+}
+
+
+
+.planet3Outline {
+    width: 64vh;
+    height: 64vh;
+}
+
+.planet3,
+.planet03 {
+    background-size: cover;
+    width: 7vh;
+    height: 7vh;
+    position: absolute;
+    top: calc(50% - 3.5vh);
+    left: calc(50% - 3.5vh);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    animation: orbit3 10s linear infinite reverse;
+}
+
+.planet3 {
+    background-image: url("img/planet3.gif");
+}
+
+.planet03 {
+    z-index: 101;
+}
+
+.planet3des {
+    display: none;
+    left: 8vh;
+}
+
+
+
+.planet4Outline {
+    width: 86vh;
+    height: 86vh;
+}
+
+.planet4,
+.planet04 {
+    background-size: cover;
+    width: 10vh;
+    height: 10vh;
+    position: absolute;
+    top: calc(50% - 5vh);
+    left: calc(50% - 5vh);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    animation: orbit4 15s linear infinite;
+}
+
+.planet4 {
+    background-image: url("img/planet4.gif");
+}
+
+.planet04 {
+    z-index: 101;
+}
+
+.planet4des {
+    display: none;
+    left: 11vh;
+}
+
+
+
+.planetdes {
+    position: absolute;
+    width: 30vh;
+    height: 35vh;
+    background-color: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+}
+
+.perImg {
+    height: 25vh;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 150;
+}
+
+.descrip {
+    position: absolute;
+    top: 25vh;
+    left: 2px;
+    font-size: 2vh;
+    font-weight: bold;
+}
+
+@keyframes orbit1 {
+    from {
+        transform: rotate(0deg) translateX(17vh) rotate(0deg);
     }
 
-    13% {
-        transform: scale(1.2);
-    }
-
-    25% {
-        transform: scale(1);
+    to {
+        transform: rotate(360deg) translateX(17vh) rotate(-360deg);
     }
 }
 
-@keyframes p2 {
-    25% {
-        transform: scale(1);
+@keyframes orbit2 {
+    from {
+        transform: rotate(0deg) translateX(25vh) rotate(0deg);
     }
 
-    38% {
-        transform: scale(1.2);
-    }
-
-    50% {
-        transform: scale(1);
+    to {
+        transform: rotate(360deg) translateX(25vh) rotate(-360deg);
     }
 }
 
-@keyframes p3 {
-    50% {
-        transform: scale(1);
+@keyframes orbit3 {
+    from {
+        transform: rotate(0deg) translateX(32vh) rotate(0deg);
     }
 
-    63% {
-        transform: scale(1.2);
-    }
-
-    75% {
-        transform: scale(1);
+    to {
+        transform: rotate(360deg) translateX(32vh) rotate(-360deg);
     }
 }
 
-@keyframes p4 {
-    75% {
-        transform: scale(1);
+@keyframes orbit4 {
+    from {
+        transform: rotate(0deg) translateX(43vh) rotate(0deg);
     }
 
-    88% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
+    to {
+        transform: rotate(360deg) translateX(43vh) rotate(-360deg);
     }
 }
