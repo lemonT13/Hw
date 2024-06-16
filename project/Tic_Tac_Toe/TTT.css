@@ -125,6 +125,7 @@ h1 {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+    animation: popup 1s ease-in-out forwards;
 }
 
 .winText,
@@ -135,4 +136,15 @@ h1 {
     border: 1px solid #888;
     width: 30%;
     text-align: center;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

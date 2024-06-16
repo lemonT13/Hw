@@ -221,6 +221,7 @@ input:checked+.flagC {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
+    animation: popup 1s ease-in-out forwards;
 }
 
 .gameOverText,
@@ -237,4 +238,15 @@ input:checked+.flagC {
     margin: 5px;
     padding: 10px 20px;
     cursor: pointer;
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

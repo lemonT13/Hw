@@ -2,7 +2,7 @@
     /* background-color: black; */
     flex-direction: row;
     justify-content: space-around;
-    background-image: url("https://i.pinimg.com/originals/7a/e3/c7/7ae3c7ad104a968dc735871c0bf17608.gif");
+    background-image: url("img/earth.jpg");
     background-size: cover;
 }
 
@@ -54,10 +54,8 @@
     z-index: 2;
 }
 
-.img1:hover {
-    transform: scale(1.1);
-    transition: transform 800ms ease;
-    /* animation: p1 8s infinite; */
+.img1, .des1 {
+    animation: p1 8s infinite;
 }
 
 .img2, .des2 {
@@ -75,15 +73,15 @@
 
 
 @keyframes p1 {
+    0% {
+        transform: scale(1);
+    }
+
     13% {
         transform: scale(1.2);
     }
 
     25% {
-        transform: scale(1);
-    }
-
-    100% {
         transform: scale(1);
     }
 }
