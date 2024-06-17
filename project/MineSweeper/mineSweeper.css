@@ -2,13 +2,25 @@
 
 body {
     margin: 0;
+    background-image: url(img/background.webp);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    font-family: "Jaro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .container {
+    margin-top: 5vh;
+    padding-bottom: 5vh;
+    width: 90vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.244);
 }
 
 .backBtn {
@@ -16,6 +28,17 @@ body {
     top: 20px;
     right: 20px;
     font-size: 30px;
+    border-radius: 7px;
+}
+
+.time {
+    position: absolute;
+    top: 30vh;
+    left:20vw;
+    display: flex;
+    flex-direction: column;
+    font-size: 5vw;
+    color: white;
 }
 
 .show {
@@ -26,6 +49,7 @@ body {
 }
 
 .switch {
+    background-color: #fff;
     position: relative;
     display: inline-block;
     width: 50px;
@@ -45,8 +69,8 @@ body {
 }
 
 .flagLeft {
-    font-size: 30px;
-    color: green;
+    font-size: 5vw;
+    color: white;
 }
 
 .switch input {
@@ -60,10 +84,12 @@ input:checked+.flagC {
 }
 
 .choose {
+    background-color: #fff;
     border: #888 2px solid;
     border-radius: 10px;
     font-size: 30px;
     position: relative;
+    padding: 0 5px;
 }
 
 .form-select {
@@ -81,14 +107,6 @@ input:checked+.flagC {
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-}
-
-.checked,
-.flag {
-    font-family: "Jaro", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
 }
 
 .checked,
@@ -232,6 +250,7 @@ input:checked+.flagC {
     border: 1px solid #888;
     width: 30%;
     text-align: center;
+    font-size: 3vh;
 }
 
 .btn {

@@ -11,6 +11,7 @@
     align-items: center;
 }
 .abtUsT span {
+    user-select: none;
     color: #faebd7;
     text-shadow: 0 0 0 #faebd7;
     animation: loading 2s ease-in-out infinite alternate;

@@ -9,9 +9,10 @@
 </head>
 
 <body>
-    <button class="backBtn" onclick="window.location.href='../home/index.html#project'">返回主页</button>
+    <div class="time"><div>Time</div><div class="timer">0.00s</div></div>
+    <button class="backBtn" onclick="window.location.href='../home/index.html#project'">Back</button>
     <div class="container">
-        <h1>Cluck Sweep</h1>
+        <h1 style="color: #fff;">Cluck Sweep</h1>
         
         <div class="show">
             <div><span class="flagLeft"></span></div>
@@ -39,7 +40,7 @@
         </div>
         <div id="win" class="win">
             <div class="winText">
-                <p>Congratulations! You Win!<br>Play Again or Next Level?</p>
+                <p>Congratulations! You Win!<br>Time Use: <div class="timeUse"></div><br>Play Again or Next Level?</p>
                 <button class="btn" onclick="restart()">Restart</button>
                 <button class="nextBtn btn" onclick="next()">Next Level</button>
             </div>

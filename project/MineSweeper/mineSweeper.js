@@ -1,3 +1,5 @@
+var gameStart = false;
+var time = 0;
 const selectElement = document.querySelector(".form-select");
 createGameBoard("boardNormal");
 selectElement.addEventListener("change", (event) => {
@@ -221,6 +223,10 @@ function createGameBoard(boardType) {
 
     function clickedCell(cell) {
         const switchFlag = document.getElementById("flagSwitch");
+        if (!gameStart){
+            gameStart = true;
+            setInterval(setTime, 10);
+        }
         if (switchFlag.checked) {
             flagCell(cell);
         } else {
@@ -285,6 +291,17 @@ function createGameBoard(boardType) {
                 checkWin();
                 
             }
+        }
+    }
+    
+    function setTime() {
+        if(gameStart){
+            time = time + 0.01
+            const timer = document.querySelector(".timer");
+            timer.innerHTML = "hello"
+            timer.innerHTML = `${time.toFixed(2)}s`;
+        }else{
+            return
         }
     }
 
@@ -693,10 +710,13 @@ function createGameBoard(boardType) {
             }
         });
         if (check == width * height - mines) {
+            gameStart = false;
             const win = document.getElementById('win');
             win.style.display = "block";
             const selectElement = document.querySelector(".form-select");
             const difficulty = selectElement.value;
+            const timer = document.querySelector('.timeUse');
+            timer.innerHTML = `${time.toFixed(2)}s`;
             if (difficulty == "boardHard") {
                 const button = document.querySelector(".nextBtn");
                 button.style.display = "none";
@@ -705,6 +725,7 @@ function createGameBoard(boardType) {
     }
 }
 function gameOver() {
+    gameStart = false;
     const gameOver = document.getElementById('gameOver');
     gameOver.style.display = "block";
     const cells = document.querySelectorAll(".cell");
@@ -735,6 +756,9 @@ function restart() {
     const win = document.getElementById('win');
     gameOver.style.display = "none";
     win.style.display = "none";
+    time = 0;
+    const timer = document.querySelector('.timer');
+    timer.innerHTML = "0.00s";
 }
 
 function next() {
