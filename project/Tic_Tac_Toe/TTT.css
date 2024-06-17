@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    background-image: url("img/background.gif");
+    background-size: cover;
 }
 
 .backBtn {
@@ -35,7 +37,7 @@ h1 {
 }
 
 .pTurn {
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.5);
 }
 
 .pCow, 
@@ -64,7 +66,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: lightgray;
+    background-color: rgba(211, 211, 211, 0.5);
     cursor: pointer;
 }
 

@@ -4,30 +4,22 @@ var playerMode;
 var comMove = 0;
 var playMove = 1;
 var gameStop = 0;
-var move = 0;
 const text = document.querySelector(".text");
 const gameOver = document.getElementById("gameOver");
 
-playMode("unbeat");
+playMode("com");
 
 function playMode(mode) {
   if (mode === "com") {
     restart();
     playerMode = "com";
-    comMove = 1;
   } else if (mode === "2P") {
     restart();
     playerMode = "2P";
-    playMove = 1;
   } else if (mode === "unbeat") {
     restart();
-    
     playerMode = "unbeat";
     comMove = 1;
-  }
-  let choose = Math.floor(Math.random() *2)
-  if (choose === 0) {
-    togglePlayer();
   }
 }
 
@@ -40,10 +32,10 @@ function play(cell, index) {
     cell.classList.add(currentPlayer);
     board[index] = currentPlayer;
     comMove = 1;
-    if (playerMode === "com" || playerMode === "unbeat") {
-      playMove = 0;
-    }
-    togglePlayer();
+    checkWin();
+    if (gameStop == 0){
+      togglePlayer();
+    } 
   }
 }
 
@@ -71,7 +63,10 @@ function computerMove() {
   randomMove();
   comMove = 0;
   playMove = 1;
+  checkWin();
+  if(gameStop === 0){
   togglePlayer();
+  }
 }
 
 function bestMove() {
@@ -90,16 +85,20 @@ function bestMove() {
     board[emptyCells[i]] = "horse"; // 假设当前空白单元格是 AI 执行移动
     let score = minimax(board, 0, false); // 调用 Minimax 算法计算分数
     board[emptyCells[i]] = ""; // 撤销当前移动
-    console.log(score);
+    console.log(emptyCells[i] + " " + score);
     if (score > bestScore) {
       bestScore = score;
       move = emptyCells[i];
     }
   }
+  console.log("------")
   playMove = 1;
   comMove = 0;
   cells(move);
-  togglePlayer();
+  checkWin();
+  if(gameStop === 0){
+    togglePlayer();
+  }
 }
 
 function minimax(board, depth, isMaximizing) {
@@ -120,7 +119,7 @@ function minimax(board, depth, isMaximizing) {
     for (let i = 0; i < board.length; i++) {
       if (board[i] === "") {
         board[i] = "horse";
-        let score = minimax(board, depth + 1, false);
+        let score = minimax(board, depth - 1, false);
         board[i] = "";
         bestScore = Math.max(score, bestScore);
       }
@@ -131,7 +130,7 @@ function minimax(board, depth, isMaximizing) {
     for (let i = 0; i < board.length; i++) {
       if (board[i] === "") {
         board[i] = "cow";
-        let score = minimax(board, depth + 1, true);
+        let score = minimax(board, depth - 1, true);
         board[i] = "";
         bestScore = Math.min(score, bestScore);
       }
@@ -213,22 +212,23 @@ function checkWin() {
 }
 
 function win() {
+  gameStop = 1;
     const cell = document.querySelectorAll(".c");
   gameOver.style.display = "block";
   if (playerMode === "com") {
-    if (playMove === 0) {
+    if (currentPlayer == "cow") {
       text.style.backgroundImage = "url('./img/youWin.png')";
     } else {
       text.style.backgroundImage = "url('./img/comWin.png')";
     }
   } else if (playerMode === "2P") {
-    if (currentPlayer === "cow") {
+    if (currentPlayer === "horse") {
       text.style.backgroundImage = "url('./img/horseWin.png')";
     } else {
       text.style.backgroundImage = "url('./img/cowWin.png')";
     }
   } else if (playerMode === "unbeat") {
-    if (playMove === 0) {
+    if (currentPlayer === "cow") {
       text.style.backgroundImage = "url('./img/youWin.png')";
     } else {
       text.style.backgroundImage = "url('./img/comWin.png')";
@@ -245,7 +245,6 @@ function restart() {
   gameStop = 0;
   playMove = 1;
   comMove = 0;
-  move = 0;
   const gameOver = document.getElementById("gameOver");
   gameOver.style.display = "none";
   const cells = document.querySelectorAll(".c");
@@ -253,9 +252,18 @@ function restart() {
     cell.classList.remove("cow", "horse");
   });
   board = ["", "", "", "", "", "", "", "", ""];
-  currentPlayer = "cow";
   const horse = document.querySelector(".pHorse");
   const cow = document.querySelector(".pCow");
   horse.classList.remove("pTurn");
   cow.classList.add("pTurn");
+  currentPlayer = "cow";
+  let choose = Math.floor(Math.random() *2)
+  if (choose === 0) {
+    
+    if (playerMode != "2P") {
+      comMove = 1;
+      playMove = 0;
+    }
+    togglePlayer();
+  }
 }
