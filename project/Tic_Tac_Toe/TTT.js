@@ -1,7 +1,6 @@
 let currentPlayer = "cow";
 let board = ["", "", "", "", "", "", "", "", ""];
 var playerMode;
-var comMove = 0;
 var playMove = 1;
 var gameStop = 0;
 const text = document.querySelector(".text");
@@ -11,15 +10,15 @@ playMode("com");
 
 function playMode(mode) {
   if (mode === "com") {
-    restart();
+    console.log("Computer mode");
     playerMode = "com";
+    restart();
   } else if (mode === "2P") {
-    restart();
     playerMode = "2P";
-  } else if (mode === "unbeat") {
     restart();
+  } else if (mode === "unbeat") {
     playerMode = "unbeat";
-    comMove = 1;
+    restart();
   }
 }
 
@@ -31,7 +30,6 @@ function play(cell, index) {
   ) {
     cell.classList.add(currentPlayer);
     board[index] = currentPlayer;
-    comMove = 1;
     checkWin();
     if (gameStop == 0){
       togglePlayer();
@@ -40,6 +38,7 @@ function play(cell, index) {
 }
 
 function togglePlayer() {
+  console.log("togglePlayer")
   currentPlayer = currentPlayer === "cow" ? "horse" : "cow";
   const horse = document.querySelector(".pHorse");
   const cow = document.querySelector(".pCow");
@@ -51,17 +50,18 @@ function togglePlayer() {
     cow.classList.add("pTurn");
   }
   checkWin();
-  if (playerMode === "com" && comMove === 1 && gameStop === 0) {
+  console.log(playerMode,currentPlayer,gameStop)
+  if (playerMode === "com" && currentPlayer === "horse" && gameStop === 0) {
+    console.log("computer move")
     setTimeout(computerMove, 500);
   }
-  if (playerMode === "unbeat" && comMove === 1 && gameStop === 0) {
+  if (playerMode === "unbeat" && currentPlayer === "horse" && gameStop === 0) {
     setTimeout(bestMove, 500);
   }
 }
 
 function computerMove() {
   randomMove();
-  comMove = 0;
   playMove = 1;
   checkWin();
   if(gameStop === 0){
@@ -93,7 +93,6 @@ function bestMove() {
   }
   console.log("------")
   playMove = 1;
-  comMove = 0;
   cells(move);
   checkWin();
   if(gameStop === 0){
@@ -244,7 +243,6 @@ function draw() {
 function restart() {
   gameStop = 0;
   playMove = 1;
-  comMove = 0;
   const gameOver = document.getElementById("gameOver");
   gameOver.style.display = "none";
   const cells = document.querySelectorAll(".c");
@@ -259,9 +257,7 @@ function restart() {
   currentPlayer = "cow";
   let choose = Math.floor(Math.random() *2)
   if (choose === 0) {
-    
     if (playerMode != "2P") {
-      comMove = 1;
       playMove = 0;
     }
     togglePlayer();
