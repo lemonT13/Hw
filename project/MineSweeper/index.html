@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>扫鸡大作战</title>
+    <title>Cluck Sweep</title>
     <link rel="stylesheet" href="mineSweeper.css">
 </head>
 
 <body>
     <button class="backBtn" onclick="window.location.href='../home/index.html#project'">返回主页</button>
     <div class="container">
-        <h1>扫鸡游戏</h1>
+        <h1>Cluck Sweep</h1>
         
         <div class="show">
             <div><span class="flagLeft"></span></div>
@@ -21,11 +21,11 @@
                 </label>
             </div>
             <div class="choose">
-                <label class="input-group-text">游戏难度</label>
+                <label class="input-group-text">Game Difficulty:</label>
                 <select class="form-select" id="inputGroupSelect01">
-                    <option selected value="boardNormal">普通</option>
-                    <option value="boardMedium">中等</option>
-                    <option value="boardHard">困难</option>
+                    <option selected value="boardNormal">Normal</option>
+                    <option value="boardMedium">Medium</option>
+                    <option value="boardHard">Hard</option>
                 </select>
             </div>
         </div>
@@ -33,15 +33,15 @@
         </div>
         <div id="gameOver" class="gameOver">
             <div class="gameOverText">
-                <p>你已失败，是否重新来过？</p>
-                <button class="btn" onclick="restart()">重新</button>
+                <p>Game Over<br>Play Again?</p>
+                <button class="btn" onclick="restart()">Restart</button>
             </div>
         </div>
         <div id="win" class="win">
             <div class="winText">
-                <p>恭喜你已胜利!</p>
-                <button class="btn" onclick="restart()">重玩</button>
-                <button class="nextBtn btn" onclick="next()">下一个难度</button>
+                <p>Congratulations! You Win!<br>Play Again or Next Level?</p>
+                <button class="btn" onclick="restart()">Restart</button>
+                <button class="nextBtn btn" onclick="next()">Next Level</button>
             </div>
         </div>
     </div>

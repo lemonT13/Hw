@@ -286,6 +286,7 @@ button {
 		white-space: nowrap;
 		transition: var(--slide-transition-duration) var(--slide-transition-easing);
 		transition-property: opacity, transform;
+		background-color: black;
 	}
 
 	&[data-title],
