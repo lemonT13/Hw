@@ -5,6 +5,9 @@ createGameBoard("boardNormal");
 selectElement.addEventListener("change", (event) => {
     const selectedBoard = event.target.value;
     createGameBoard(`${selectedBoard}`);
+    time = 0;
+    const timer = document.querySelector('.timer');
+    timer.innerHTML = "0.00s";
 });
 
 function createGameBoard(boardType) {
