@@ -5,12 +5,12 @@ createGameBoard("boardNormal");
 selectElement.addEventListener("change", (event) => {
     const selectedBoard = event.target.value;
     createGameBoard(`${selectedBoard}`);
-    time = 0;
-    const timer = document.querySelector('.timer');
-    timer.innerHTML = "0.00s";
 });
 
 function createGameBoard(boardType) {
+    time = 0;
+    const timer = document.querySelector('.timer');
+    timer.innerHTML = "0.00s";
     document.getElementById("board").innerHTML = "";
     const board = document.querySelector('#board');
     const boardChoose = document.createElement('div');
@@ -759,9 +759,6 @@ function restart() {
     const win = document.getElementById('win');
     gameOver.style.display = "none";
     win.style.display = "none";
-    time = 0;
-    const timer = document.querySelector('.timer');
-    timer.innerHTML = "0.00s";
 }
 
 function next() {
@@ -774,7 +771,4 @@ function next() {
         createGameBoard("boardHard");
     }
     win.style.display = "none";
-    time = 0;
-    const timer = document.querySelector('.timer');
-    timer.innerHTML = "0.00s";
 }
