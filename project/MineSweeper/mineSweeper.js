@@ -771,4 +771,7 @@ function next() {
         createGameBoard("boardHard");
     }
     win.style.display = "none";
+    time = 0;
+    const timer = document.querySelector('.timer');
+    timer.innerHTML = "0.00s";
 }
