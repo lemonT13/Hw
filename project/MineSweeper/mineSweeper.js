@@ -767,8 +767,10 @@ function next() {
     const win = document.getElementById('win');
     if (difficulty == "boardNormal") {
         selectElement.value = "boardMedium";
+        createGameBoard("boardMedium");
     } else {
         selectElement.value = "boardHard";
+        createGameBoard("boardHard");
     }
     win.style.display = "none";
 }
